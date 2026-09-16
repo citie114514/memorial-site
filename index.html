@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深切缅怀 · In Loving Memory</title>
+  <meta name="description" content="深切缅怀 · In Loving Memory">
+  <link rel="icon" href="assets/portrait.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="site-header__brand" data-char="candle">🕯</span>
+    <button id="langToggle" class="lang-toggle" type="button">English</button>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="hero__portrait-wrap">
+        <img id="portrait" class="hero__portrait" src="" alt="">
+        <div class="hero__halo"></div>
+      </div>
+      <h1 class="hero__title" data-i18n="memorialTitle"></h1>
+      <p class="hero__name" id="memorialName"></p>
+      <p class="hero__dates" id="memorialDates"></p>
+    </section>
+
+    <section class="section eulogy">
+      <h2 class="section__title" data-i18n="eulogyTitle"></h2>
+      <div class="eulogy__body" id="eulogyBody"></div>
+    </section>
+
+    <section class="section timeline">
+      <h2 class="section__title" data-i18n="timelineTitle"></h2>
+      <ol class="timeline__list" id="timelineList"></ol>
+    </section>
+
+    <section class="section gallery">
+      <h2 class="section__title" data-i18n="galleryTitle"></h2>
+      <ul class="gallery__grid" id="galleryGrid"></ul>
+    </section>
+
+    <section class="section offerings">
+      <h2 class="section__title" data-i18n="offeringsTitle"></h2>
+      <p class="offerings__hint" data-i18n="offeringsHint"></p>
+      <div class="offerings__buttons">
+        <button id="btnCandle" class="offering-btn" type="button">
+          <span class="offering-btn__icon" id="candleIcon"></span>
+          <span data-i18n="btnCandle"></span>
+          <span class="offering-btn__count" id="candleCount">0</span>
+        </button>
+        <button id="btnFlower" class="offering-btn" type="button">
+          <span class="offering-btn__icon">🌸</span>
+          <span data-i18n="btnFlower"></span>
+          <span class="offering-btn__count" id="flowerCount">0</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section messages">
+      <h2 class="section__title" data-i18n="messagesTitle"></h2>
+      <form id="msgForm" class="msg-form" autocomplete="off">
+        <div class="msg-form__row">
+          <input id="msgName" class="msg-form__input" type="text" maxlength="30" data-i18n-placeholder="msgNamePlaceholder">
+          <select id="msgKind" class="msg-form__select">
+            <option value="candle">🕯 <span data-i18n="kindCandle"></span></option>
+            <option value="flower">🌸 <span data-i18n="kindFlower"></span></option>
+            <option value="none"><span data-i18n="kindNone"></span></option>
+          </select>
+        </div>
+        <textarea id="msgText" class="msg-form__textarea" rows="3" maxlength="500" required data-i18n-placeholder="msgTextPlaceholder"></textarea>
+        <button class="msg-form__submit" type="submit" data-i18n="msgSubmit"></button>
+      </form>
+      <ul class="msg-list" id="msgList"></ul>
+      <p class="msg-list__empty" id="msgListEmpty" data-i18n="msgListEmpty"></p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footerText"></p>
+  </footer>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    <span class="lightbox__close" id="lightboxClose">✕</span>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
