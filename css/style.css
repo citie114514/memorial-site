@@ -523,6 +523,121 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ---------- incense ---------- */
+.incense-altar {
+  position: relative;
+  margin-top: 2.4rem;
+  text-align: center;
+}
+
+.incense-altar__sticks {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1.15rem;
+  min-height: 178px;
+}
+
+.incense {
+  position: relative;
+  width: 34px;
+  height: 178px;
+  animation: fadeUp 0.5s ease backwards;
+}
+
+.incense__stick {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 7px;
+  margin-left: -3.5px;
+  height: 168px;
+  background: linear-gradient(to bottom, #8a6f52 0 7px, #d9c394 9px 100%);
+  border-radius: 3px;
+}
+
+.incense__glow {
+  position: absolute;
+  bottom: 163px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 176, 96, 0.95), rgba(255, 106, 61, 0.35) 55%, transparent 75%);
+  animation: glow 1.3s ease-in-out infinite;
+}
+
+.incense__smoke {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  border-radius: 50%;
+  background: rgba(228, 220, 205, 0.5);
+  filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.incense__smoke--1 { animation: smokeUp 4.2s ease-out infinite; }
+.incense__smoke--2 { animation: smokeUp 4.2s ease-out 1.15s infinite; }
+
+.incense-altar__burner {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  padding: 0.95rem 2.6rem;
+  background: linear-gradient(180deg, #2b2620, #1c1915 70%);
+  border: 1px solid var(--border);
+  border-radius: 50% 50% 14px 14px;
+}
+
+.incense-altar__coal {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffb060, #a8491f 60%, #5a2a12);
+  box-shadow: 0 0 12px rgba(255, 150, 70, 0.55);
+  animation: glow 2s ease-in-out infinite;
+}
+
+.incense-icon {
+  width: 16px;
+  height: 38px;
+  vertical-align: middle;
+  display: block;
+}
+
+.incense-icon__wisp {
+  animation: wispUp 2.4s ease-out infinite;
+}
+
+@keyframes smokeUp {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  18% { opacity: 0.55; }
+  100% { transform: translateY(-132px) scale(4.6); opacity: 0; }
+}
+
+@keyframes wispUp {
+  0% { opacity: 0; }
+  25% { opacity: 0.6; }
+  100% { transform: translateY(-7px); opacity: 0; }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
 /* ---------- responsive ---------- */
 @media (max-width: 560px) {
   .hero__name { font-size: 1.7rem; }

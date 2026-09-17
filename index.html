@@ -56,6 +56,18 @@
           <span data-i18n="btnFlower"></span>
           <span class="offering-btn__count" id="flowerCount">0</span>
         </button>
+        <button id="btnIncense" class="offering-btn" type="button">
+          <span class="offering-btn__icon" id="incenseIcon"></span>
+          <span data-i18n="btnIncense"></span>
+          <span class="offering-btn__count" id="incenseCount">0</span>
+        </button>
+      </div>
+      <div class="incense-altar">
+        <div class="incense-altar__sticks" id="incenseSticks"></div>
+        <div class="incense-altar__burner">
+          <span class="incense-altar__coal" id="incenseCoal"></span>
+          <span data-i18n="burnerLabel"></span>
+        </div>
       </div>
     </section>
 
@@ -66,6 +78,7 @@
           <input id="msgName" class="msg-form__input" type="text" maxlength="30" data-i18n-placeholder="msgNamePlaceholder">
           <select id="msgKind" class="msg-form__select">
             <option value="candle">🕯 <span data-i18n="kindCandle"></span></option>
+            <option value="incense"><span data-i18n="kindIncense"></span></option>
             <option value="flower">🌸 <span data-i18n="kindFlower"></span></option>
             <option value="none"><span data-i18n="kindNone"></span></option>
           </select>
@@ -88,7 +101,7 @@
     <span class="lightbox__close" id="lightboxClose">✕</span>
   </div>
 
-  <script src="js/data.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/data.js?v=20260917"></script>
+  <script src="js/main.js?v=20260917"></script>
 </body>
 </html>

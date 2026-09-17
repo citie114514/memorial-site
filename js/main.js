@@ -10,10 +10,13 @@ const I18N = {
     offeringsHint: "为敬爱的人点亮一盏烛火，献上一束鲜花",
     btnCandle: "点亮蜡烛",
     btnFlower: "献上鲜花",
+    btnIncense: "敬 香",
+    burnerLabel: "香 炉",
     messagesTitle: "留 言 悼 念",
     msgNamePlaceholder: "您的称呼（可选）",
     msgTextPlaceholder: "写下您想说的话…",
     kindCandle: "点烛",
+    kindIncense: "烧香",
     kindFlower: "献花",
     kindNone: "仅留言",
     msgSubmit: "送上思念",
@@ -30,10 +33,13 @@ const I18N = {
     offeringsHint: "Light a candle and offer a flower for the loved one",
     btnCandle: "Light Candle",
     btnFlower: "Offer Flower",
+    btnIncense: "Burn Incense",
+    burnerLabel: "Incense Burner",
     messagesTitle: "Condolences",
     msgNamePlaceholder: "Your name (optional)",
     msgTextPlaceholder: "Write your words here…",
     kindCandle: "Candle",
+    kindIncense: "Incense",
     kindFlower: "Flower",
     kindNone: "Message",
     msgSubmit: "Send",
@@ -53,6 +59,7 @@ function readNum(key) {
 
 let candles = readNum("memorial_candles");
 let flowers = readNum("memorial_flowers");
+let incenses = readNum("memorial_incense");
 let messages = [];
 
 try {
@@ -82,6 +89,15 @@ function esc(s) {
 function candleHTML(lit) {
   return '<span class="candle ' + (lit ? "candle--lit" : "candle--dim") + '">' +
     '<span class="candle__flame"></span><span class="candle__wax"></span></span>';
+}
+
+function incenseHTML() {
+  return '<svg class="incense-icon" viewBox="0 0 24 56" aria-hidden="true">' +
+    '<rect x="7" y="10" width="10" height="44" rx="4" fill="#d9c394"/>' +
+    '<rect x="7" y="10" width="10" height="6" rx="3" fill="#8a6f52"/>' +
+    '<circle cx="12" cy="8" r="3" fill="#ff6a3d"/>' +
+    '<path class="incense-icon__wisp" d="M12 4 Q15 0 12 -4 Q9 -8 12 -12" stroke="rgba(230,220,200,0.6)" stroke-width="1.4" fill="none" stroke-linecap="round"/>' +
+    '</svg>';
 }
 
 function fmtDate(ts) {
@@ -167,7 +183,9 @@ function render() {
 
   document.getElementById("candleCount").textContent = candles;
   document.getElementById("flowerCount").textContent = flowers;
+  document.getElementById("incenseCount").textContent = incenses;
   document.getElementById("candleIcon").innerHTML = candleHTML(true);
+  document.getElementById("incenseIcon").innerHTML = incenseHTML();
 
   renderI18N();
   renderMessages();
@@ -194,6 +212,7 @@ function renderMessages() {
     const right = document.createElement("span");
     right.className = "msg-item__right";
     if (m.kind === "candle") right.innerHTML = candleHTML(true);
+    else if (m.kind === "incense") right.innerHTML = incenseHTML();
     else if (m.kind === "flower") right.textContent = "🌸";
     else right.textContent = "";
     right.title = t("kind" + m.kind.charAt(0).toUpperCase() + m.kind.slice(1) || "");
@@ -223,6 +242,32 @@ function offerFlower() {
   flowers += 1;
   persist("memorial_flowers", String(flowers));
   document.getElementById("flowerCount").textContent = flowers;
+}
+
+function incenseStickHTML(delay) {
+  return '<div class="incense" style="animation-delay:' + delay + 's">' +
+    '<span class="incense__smoke incense__smoke--1"></span>' +
+    '<span class="incense__smoke incense__smoke--2"></span>' +
+    '<span class="incense__glow"></span>' +
+    '<span class="incense__stick"></span>' +
+    '</div>';
+}
+
+function spawnIncense() {
+  const sticks = document.getElementById("incenseSticks");
+  [0, 0.32, 0.64].forEach((d) => {
+    sticks.insertAdjacentHTML("beforeend", incenseStickHTML(d));
+  });
+  while (sticks.children.length > 24) {
+    sticks.removeChild(sticks.firstChild);
+  }
+}
+
+function lightIncense() {
+  incenses += 1;
+  persist("memorial_incense", String(incenses));
+  document.getElementById("incenseCount").textContent = incenses;
+  spawnIncense();
 }
 
 function submitMessage(e) {
@@ -260,6 +305,7 @@ document.getElementById("langToggle").addEventListener("click", () => {
 
 document.getElementById("btnCandle").addEventListener("click", lightCandle);
 document.getElementById("btnFlower").addEventListener("click", offerFlower);
+document.getElementById("btnIncense").addEventListener("click", lightIncense);
 document.getElementById("msgForm").addEventListener("submit", submitMessage);
 
 lightbox.addEventListener("click", (e) => {

@@ -10,12 +10,12 @@ A simple, solemn, fully static memorial page to honor someone you love. No serve
 - 📖 悼词 — Eulogy
 - 🗓 生平时间线 — Life timeline
 - 📷 照片墙（点击可放大）— Photo gallery with lightbox
-- 🕯 点烛 · 🌸 献花 — Light candles & offer flowers
+- 🕯 点烛 · 🌸 献花 · 🪷 烧香 — Light candles, offer flowers & burn incense
 - 💬 留言悼念墙 — Condolence message wall
 - 🌐 中英双语一键切换 — One-click zh/en toggle
 - 📱 响应式移动端适配 — Fully responsive
 
-> 所有互动数据（蜡烛数、鲜花数、留言、语言偏好）保存在访问者浏览器的 `localStorage` 中，纯前端实现，无需任何后端。
+> 所有互动数据（蜡烛数、鲜花数、香数、留言、语言偏好）保存在访问者浏览器的 `localStorage` 中，纯前端实现，无需任何后端。
 
 > All interaction data (candles, flowers, messages, language) is stored in the visitor's browser via `localStorage`. It is 100% front-end — no backend required.
 
